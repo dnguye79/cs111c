@@ -1,0 +1,32 @@
+Fraction f = new Fraction(29);
+f.add(20);
+basic operations with an int
+public Fraction(int value)
+
+
+failing fast
+
+throw new IllegalStateException("Zero denominator");
+
+instance variables
+public, private, protected
+final
+static (vs. dynamic)
+methods & constructors
+
+class exists at compile time
+
+static
+compile time
+
+dynamic
+run time
+
+generics
+declaring interfaces
+declaring classes
+creating objects and references
+
+wrapper class
+
+StringArrayWrapperInterface
