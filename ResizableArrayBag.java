@@ -2,7 +2,7 @@
 /**
  * CS 111C Fall 2015
  * Assignment 2
- * Nguyen, Dao Minh
+ * Nguyen, Dao
  */
 
 import java.util.Arrays;
