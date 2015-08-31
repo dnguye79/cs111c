@@ -9,8 +9,9 @@ public class BagDriver {
 
 	public static void main(String[] args) {
 		//testUnion();
-		
+		//System.out.println("---------------------------------------");
 		testIntersection();
+		//System.out.println("---------------------------------------");
 		//testDifference();
 	}
 	
@@ -65,7 +66,10 @@ public class BagDriver {
 	public static void printBag(ResizableArrayBag<?> bag) {
 		Object[] afa = bag.toArray();
 		for (int i = 0; i < afa.length; i++)
-			System.out.println(afa[i]);
+			if (i == afa.length - 1)
+				System.out.println(afa[i]);
+			else	
+				System.out.print(afa[i] + ", ");
 		System.out.println("************");
 	}
 

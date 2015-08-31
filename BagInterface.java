@@ -49,8 +49,8 @@ public interface BagInterface<T> {
 	
 	/**
 	 * 
-	 * @param other
-	 * @return
+	 * @param other bag to make a union with
+	 * @return bag contains the content of both bags
 	 */
 	public ResizableArrayBag<T> union(ResizableArrayBag<T> other);
 	
