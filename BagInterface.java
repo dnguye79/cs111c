@@ -15,7 +15,7 @@ public interface BagInterface<T> {
 	public boolean isEmpty();
 	
 	/** Adds a new entry to this bag.
-	 * @param newEntry  The objet to be added as a new entry.
+	 * @param newEntry  The object to be added as a new entry.
 	 * @return  True if the addition is successful, or false if not. */
 	public boolean add(T newEntry);
 	
