@@ -168,7 +168,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 		ArrayList<Integer> occur = new ArrayList<Integer>();
 		ArrayList<Integer> skip = new ArrayList<Integer>();
 		ArrayList<T> value = new ArrayList<T>();
-		boolean flagb = false;
+		boolean flagb = false, flagc = false;
 		
 		for (int i = 0; i < this.numberOfEntries; i++) {
 			if (flagb) {
@@ -193,16 +193,25 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 				if (this.bag[i].equals(other.bag[y])) {
 					counterO++;
 					if(flag) {
-						value.add(other.bag[y]);
+						System.out.println(this.bag[i]); //for debugging
+						value.add(this.bag[i]);
 						flag = false;
+						flagc = true;
 					}
 				}
 			}
 			
-			if (counterT < counterO)
+			if(flagc) {
+			if (counterT < counterO) {
 				occur.add(counterT);
-			else
+				System.out.println(counterT);//
+			}
+			else {
 				occur.add(counterO);
+				System.out.println(counterO); //
+			}
+			}
+			flagc = false;
 		}
 		
 		int counter = 0;

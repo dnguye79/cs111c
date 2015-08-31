@@ -9,6 +9,7 @@ public class BagDriver {
 
 	public static void main(String[] args) {
 		//testUnion();
+		
 		testIntersection();
 		//testDifference();
 	}
@@ -40,11 +41,15 @@ public class BagDriver {
 		aBag.add("dog");
 		aBag.add("cat");
 		
-		BagInterface<String> ae = new ResizableArrayBag<String>(3);
-		ae.add("dog");
-		ae.add("cat");
+		printBag((ResizableArrayBag<?>)aBag);
 		
-		BagInterface<String> aIntersect = aBag.intersection((ResizableArrayBag<String>) ae);
+		BagInterface<String> bBag = new ResizableArrayBag<String>(3);
+		bBag.add("dog");
+		bBag.add("cat");
+		
+		printBag((ResizableArrayBag<?>) bBag);
+		
+		BagInterface<String> aIntersect = aBag.intersection((ResizableArrayBag<String>) bBag);
 		System.out.println(aIntersect.getCurrentSize());
 		
 		Object[] afa = aIntersect.toArray();
@@ -55,6 +60,13 @@ public class BagDriver {
 	
 	public static void testDifference() {
 		
+	}
+	
+	public static void printBag(ResizableArrayBag<?> bag) {
+		Object[] afa = bag.toArray();
+		for (int i = 0; i < afa.length; i++)
+			System.out.println(afa[i]);
+		System.out.println("************");
 	}
 
 }
