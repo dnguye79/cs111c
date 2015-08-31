@@ -44,10 +44,10 @@ public class BagDriver {
 		ae.add("dog");
 		ae.add("cat");
 		
-		BagInterface<String> aUnion = aBag.intersection((ResizableArrayBag<String>) ae);
-		System.out.println(aUnion.getCurrentSize());
+		BagInterface<String> aIntersect = aBag.intersection((ResizableArrayBag<String>) ae);
+		System.out.println(aIntersect.getCurrentSize());
 		
-		Object[] afa = aUnion.toArray();
+		Object[] afa = aIntersect.toArray();
 		for (int i = 0; i < afa.length; i++) {
 			System.out.println(afa[i]);
 		}

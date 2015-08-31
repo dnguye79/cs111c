@@ -166,8 +166,8 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 		@SuppressWarnings("unchecked")
 		T[] tempBag = (T[]) new Object[this.numberOfEntries + other.numberOfEntries];
 		ArrayList<Integer> occur = new ArrayList<Integer>();
-		ArrayList<T> value = new ArrayList<T>();
 		ArrayList<Integer> skip = new ArrayList<Integer>();
+		ArrayList<T> value = new ArrayList<T>();
 		boolean flagb = false;
 		
 		for (int i = 0; i < this.numberOfEntries; i++) {
