@@ -168,7 +168,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 		ArrayList<Integer> occur = new ArrayList<Integer>();
 		ArrayList<Integer> skip = new ArrayList<Integer>();
 		ArrayList<T> value = new ArrayList<T>();
-		boolean flagb = false, flagc = false;
+		boolean flagb = false, flagc = false, flagd = false;
 		
 		for (int i = 0; i < this.numberOfEntries; i++) {
 			if (flagb) {
@@ -178,22 +178,18 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 			
 			int counterT = 0, counterO = 0;
 				
-			for (int ix = 0; ix < this.numberOfEntries; ix++) {
-				if (this.bag[i] == this.bag[ix]) {
-					counterT++;
-					
-					skip.add(ix);
-				}
-			}
+			
 			flagb = true;
+			
 			
 			
 			boolean flag = true;
 			for (int y = 0; y < other.numberOfEntries; y++) {
 				if (this.bag[i].equals(other.bag[y])) {
 					counterO++;
+					flagd = true;
 					if(flag) {
-						System.out.println(this.bag[i]); //for debugging
+						//System.out.println(this.bag[i]); //for debugging
 						value.add(this.bag[i]);
 						flag = false;
 						flagc = true;
@@ -201,16 +197,27 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 				}
 			}
 			
+			if (flagd) {
+				for (int ix = 0; ix < this.numberOfEntries; ix++) {
+					if (this.bag[i].equals(this.bag[ix])) {
+						counterT++;
+						//System.out.println(counterT);//
+						skip.add(ix);
+					}
+				}
+				flagd = false;
+			}
+			
 			if(flagc) {
-			if (counterT < counterO) {
-				occur.add(counterT);
-				System.out.println(counterT);//
-			}
-			else {
+				if (counterT < counterO) {
+					occur.add(counterT);
+					//System.out.println(counterT);//
+				}
+			} else {
 				occur.add(counterO);
-				System.out.println(counterO); //
+				//System.out.println(counterO); //
 			}
-			}
+			
 			flagc = false;
 		}
 		
@@ -218,9 +225,10 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 		for (int x = 0; x < value.size(); x++) {
 			for (int y = 0; y < occur.size(); y++) {
 				for (int z = 0; z < occur.get(y); z++) {
-					System.out.println(occur.get(y));
+					System.out.println(occur.get(y));//
 					tempBag[counter] = value.get(x);
-					
+					System.out.println(tempBag[counter]);//
+					counter++;
 				}
 				
 			}
