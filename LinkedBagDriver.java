@@ -6,13 +6,18 @@ public class LinkedBagDriver {
 	
 	public static void testUnion() {
 		String[] s = {"hello", "chicken", "hello"};
-		BagInterface<String> aBag = new LinkedBag<String>(s);
+		LinkedBagInterface<String> aBag = new LinkedBag<String>(s);
 		
 		String[] s1 = {"chicken", "dog", "cat"};
-		BagInterface<String> ae = new LinkedBag<String>(s1);
+		LinkedBagInterface<String> ae = new LinkedBag<String>(s1);
 		
+		String[] s2 = aBag.toArray();
 		
-		BagInterface<String> aUnion = aBag.union((LinkedBag<String>) ae);
+		for (int i = 0; i < s2.length; i++) {
+			System.out.println(s2[i]);
+		}
+		
+		LinkedBagInterface<String> aUnion = aBag.union((LinkedBag<String>) ae);
 		System.out.println(aUnion.getCurrentSize());
 		
 		Object[] afa = aUnion.toArray();

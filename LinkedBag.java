@@ -1,5 +1,5 @@
 
-public class LinkedBag<T> implements BagInterface<T> {
+public class LinkedBag<T> implements LinkedBagInterface<T> {
 	private Node<T> head;
 	private int numOfEntries;
 	
@@ -9,15 +9,16 @@ public class LinkedBag<T> implements BagInterface<T> {
 	}
 	
 	public LinkedBag(T[] a) {
-		Node<T> firstNode = new Node<T>(a[0]);
-		head = firstNode;
-		numOfEntries = 1;
+		//Node<T> firstNode = new Node<T>(a[0]);
+		//head = firstNode;
+		//numOfEntries = 1;
 		
-		for (int i = 1; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) {
 			add(a[i]);
 		}
 		
 	}
+	
 	@Override
 	public int getCurrentSize() {
 		
@@ -36,7 +37,7 @@ public class LinkedBag<T> implements BagInterface<T> {
 	@Override
 	public boolean add(T newEntry) {
 		Node<T> newNode = new Node<T>(newEntry);
-		newNode.data = newEntry;
+		newNode.setData(newEntry);
 		//newNode.next = null;
 		
 		if (numOfEntries == 0) {
@@ -44,7 +45,7 @@ public class LinkedBag<T> implements BagInterface<T> {
 		} else { // add to end of list
 			Node<T> tail = head;
 			while (tail.next != null)
-				tail = tail.next;
+				tail = tail.getNextNode();
 			tail.next = newNode;
 		}
 		
@@ -57,7 +58,7 @@ public class LinkedBag<T> implements BagInterface<T> {
 		T result = null;
 		if (head != null) {
 			result = head.data;
-			head = head.next;
+			head = head.getNextNode();
 			numOfEntries--;
 		}
 		
@@ -169,6 +170,10 @@ public class LinkedBag<T> implements BagInterface<T> {
 		
 		for (int i = 0; i < this.numOfEntries; i++) {
 			unionArray[i] = arrayCurrent[i];
+		}
+		
+		for (int i = 0; i < other.numOfEntries; i++) {
+			unionArray[this.numOfEntries + i] = arrayOther[i];
 		}
 		
 		LinkedBag<T> unionBag = new LinkedBag<>(unionArray);
