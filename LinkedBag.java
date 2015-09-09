@@ -9,10 +9,6 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 	}
 	
 	public LinkedBag(T[] a) {
-		//Node<T> firstNode = new Node<T>(a[0]);
-		//head = firstNode;
-		//numOfEntries = 1;
-		
 		for (int i = 0; i < a.length; i++) {
 			add(a[i]);
 		}

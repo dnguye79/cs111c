@@ -1,25 +1,43 @@
 
 public class LinkedBagDriver {
 	public static void main(String[] args) {
-		
+		testConstructor();
+		//System.out.println("********************************************");
+		testRemoveEvery();
+		//System.out.println("********************************************");
+		testEquals();
+		//System.out.println("********************************************");
+		testUnion();
 	}
 	
+	public static void testConstructor(){}
+	
+	public static void testRemoveEvery(){}
+	
+	public static void testEquals(){}
+	
 	public static void testUnion() {
-		String[] s = {"hello", "chicken", "hello"};
-		LinkedBagInterface<String> aBag = new LinkedBag<String>(s);
+		String[] s = {"hello", "gag", "hello"};
+		LinkedBagInterface<String> b1 = new LinkedBag<String>(s);
 		
-		String[] s1 = {"chicken", "dog", "cat"};
-		LinkedBagInterface<String> ae = new LinkedBag<String>(s1);
-		
-		String[] s2 = aBag.toArray();
-		
-		for (int i = 0; i < s2.length; i++) {
-			System.out.println(s2[i]);
+		System.out.println("Content of bag 1: ");
+		Object[] wow1 = b1.toArray();
+		for (int i = 0; i < wow1.length; i++) {
+			System.out.println(wow1[i]);	
 		}
 		
-		LinkedBagInterface<String> aUnion = aBag.union((LinkedBag<String>) ae);
-		System.out.println(aUnion.getCurrentSize());
+		String[] s1 = {"chicken", "dog", "cat"};
+		LinkedBagInterface<String> b2 = new LinkedBag<String>(s1);
 		
+		System.out.println("Content of bag 2: ");
+		Object[] wow2 = b2.toArray();
+		for (int i = 0; i < wow2.length; i++) {
+			System.out.println(wow2[i]);	
+		}
+		
+		LinkedBagInterface<String> aUnion = b1.union((LinkedBag<String>) b2);
+		
+		System.out.println("Content of union of bag1 and bag2: ");	
 		Object[] afa = aUnion.toArray();
 		for (int i = 0; i < afa.length; i++) {
 			System.out.println(afa[i]);
