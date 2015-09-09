@@ -136,11 +136,15 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 	 */
 	
 	public boolean removeEvery(T anEntry) {
-		int index = 0;
+		/**int index = 0;
 		Node<T> currentNode = head;
 		
+		@SuppressWarnings("unchecked")
+		T[] array = (T[]) new Object[numOfEntries];
+		array = toArray();
+		
 		while((index < numOfEntries) && (currentNode != null)) {
-			if (anEntry == currentNode.getData()) {
+			if (anEntry == array[index]) {
 				remove(anEntry);
 			}
 			index++;
@@ -148,6 +152,12 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 		}
 		
 		return true;
+		*/
+		boolean flag = true;
+		while (flag) {
+			flag = remove(anEntry);
+		}
+		return flag;
 	}
 	
 	/**
