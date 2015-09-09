@@ -13,7 +13,7 @@ public class LinkedBagDriver {
 	public static void testConstructor(){}
 	
 	public static void testRemoveEvery(){
-		String[] s = {"hello", "gag", "hello"};
+		String[] s = {"hello", "gag", "hello", "saggy", "boot"};
 		LinkedBagInterface<String> b1 = new LinkedBag<String>(s);
 		
 

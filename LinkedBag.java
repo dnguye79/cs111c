@@ -161,7 +161,7 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 	}
 	
 	/**
-	 * 
+	 * @return 
 	 */
 	
 	@Override
