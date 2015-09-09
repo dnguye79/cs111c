@@ -4,7 +4,7 @@ public class LinkedBagDriver {
 		testConstructor();
 		//System.out.println("********************************************");
 		testRemoveEvery();
-		//System.out.println("********************************************");
+		System.out.println("********************************************");
 		testEquals();
 		//System.out.println("********************************************");
 		testUnion();
@@ -12,7 +12,25 @@ public class LinkedBagDriver {
 	
 	public static void testConstructor(){}
 	
-	public static void testRemoveEvery(){}
+	public static void testRemoveEvery(){
+		String[] s = {"hello", "gag", "hello"};
+		LinkedBagInterface<String> b1 = new LinkedBag<String>(s);
+		
+
+		System.out.println("Content of bag 1: ");
+		Object[] wow1 = b1.toArray();
+		for (int i = 0; i < wow1.length; i++) {
+			System.out.println(wow1[i]);	
+		}
+		
+		if (((LinkedBag<String>)b1).removeEvery("hello")){
+			System.out.println("Content of bag 1 after remove hello: ");
+			Object[] wow3 = b1.toArray();
+			for (int i = 0; i < wow3.length; i++) {
+				System.out.println(wow3[i]);	
+			}
+		}
+	}
 	
 	public static void testEquals(){}
 	

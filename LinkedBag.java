@@ -12,12 +12,10 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 		for (int i = 0; i < a.length; i++) {
 			add(a[i]);
 		}
-		
 	}
 	
 	@Override
 	public int getCurrentSize() {
-		
 		return numOfEntries;
 	}
 
@@ -137,7 +135,18 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 	 * @return
 	 */
 	
-	public boolean removeEvery() {
+	public boolean removeEvery(T anEntry) {
+		int index = 0;
+		Node<T> currentNode = head;
+		
+		while((index < numOfEntries) && (currentNode != null)) {
+			if (anEntry == currentNode.getData()) {
+				remove(anEntry);
+			}
+			index++;
+			currentNode = currentNode.next;
+		}
+		
 		return true;
 	}
 	
@@ -147,7 +156,14 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return true;
+		if (obj instanceof LinkedBag<?>) {
+			LinkedBag<T> otherBag = (LinkedBag<T>) obj;
+			
+			if (this.numOfEntries == otherBag.numOfEntries) {
+				
+			}
+		}
+		return false;
 	}
 	
 
