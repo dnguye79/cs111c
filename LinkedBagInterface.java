@@ -1,3 +1,8 @@
+/**
+ * CS 111C Fall 2015
+ * Assignment 3
+ * Nguyen, Dao Minh
+ */
 
 public interface LinkedBagInterface<T> {
 	/** 
@@ -60,9 +65,9 @@ public interface LinkedBagInterface<T> {
 	public T[] toArray();
 	
 	/**
-	 * 
-	 * @param other
-	 * @return
+	 * Create a union of two bags.
+	 * @param other bag to to create union with.
+	 * @return bag which contains contents of both bags.
 	 */
 	public LinkedBag<T> union(LinkedBag<T> other);
 } // end BagInterface

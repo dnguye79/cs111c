@@ -1,3 +1,8 @@
+/**
+ * CS 111C Fall 2015
+ * Assignment 3
+ * Nguyen, Dao Minh
+ */
 
 public class LinkedBag<T> implements LinkedBagInterface<T> {
 	private Node<T> head;
@@ -47,6 +52,7 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T remove() {
 		T result = null;
@@ -59,6 +65,7 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean remove(T anEntry) {
 		boolean result = false;
@@ -76,10 +83,12 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		this.head = null;
+		numOfEntries = 0;
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public int getFrequencyOf(T anEntry) {
 		int frequency = 0;
@@ -97,6 +106,7 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 		return frequency;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean contains(T anEntry) {
 		boolean found = false;
@@ -113,13 +123,13 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 		return found;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T[] toArray() {
-		@SuppressWarnings("unchecked")
 		T[] result = (T[]) new Object[numOfEntries];
 		
 		int index = 0;
-		Node currentNode = head;
+		Node<T> currentNode = head;
 		
 		while((index < numOfEntries) && (currentNode != null)) {
 			result[index] = (T) currentNode.data;
@@ -131,55 +141,52 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Remove every instances of the same entry in a bag.
+	 * @return true if the operation is successful
 	 */
-	
 	public boolean removeEvery(T anEntry) {
-		/**int index = 0;
-		Node<T> currentNode = head;
-		
-		@SuppressWarnings("unchecked")
-		T[] array = (T[]) new Object[numOfEntries];
-		array = toArray();
-		
-		while((index < numOfEntries) && (currentNode != null)) {
-			if (anEntry == array[index]) {
-				remove(anEntry);
-			}
-			index++;
-			currentNode = currentNode.next;
-		}
-		
-		return true;
-		*/
 		boolean flag = true;
 		while (flag) {
 			flag = remove(anEntry);
 		}
-		return flag;
+		
+		if (flag != true)
+			return true;
+		return false;
 	}
 	
 	/**
-	 * @return 
+	 * Compare the contents of two bags.
+	 * @return true when the contents of two bags are the same.
 	 */
-	
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof LinkedBag<?>) {
 			LinkedBag<T> otherBag = (LinkedBag<T>) obj;
 			
 			if (this.numOfEntries == otherBag.numOfEntries) {
-				
+				Node<T> currNode = head;
+							
+				for (int i = 0; i < this.numOfEntries; i++) {
+					if (otherBag.contains(currNode.data)) {
+						if (!(getFrequencyOf(currNode.data) == otherBag.getFrequencyOf(currNode.data)))
+							return false;
+					} else {
+						return false;
+					}
+					currNode = currNode.next;
+				}
+				return true;
 			}
 		}
 		return false;
 	}
 	
-
-	
 	/**
-	 * 
+	 * Create a union of two bags.
+	 * @param other bag to to create union with.
+	 * @return bag which contains contents of both bags.
 	 */
 	public LinkedBag<T> union(LinkedBag<T> other) {
 		int numOfEntries = this.numOfEntries + other.numOfEntries;
@@ -207,6 +214,7 @@ public class LinkedBag<T> implements LinkedBagInterface<T> {
 	 * @return a reference to the node containing the entry, if located,
 	 * or null otherwise.
 	 */
+	@SuppressWarnings("unchecked")
 	private Node<T> getReferenceTo(T anEntry) {
 		boolean found = false;
 		Node<T> currentNode = head;
